@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grant Writing Assistant — User Guide</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B3A5C;--teal:#2A7B6F;--gold:#D4A017;--bg:#f0f4f8;--white:#fff;--border:#e2e8f0;--text:#1a1a2e;--muted:#64748b;--light:#f8fafc;--red:#c0392b;--green:#2d7a4f}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+a{color:var(--teal);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{background:var(--navy);color:#fff;padding:14px 24px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.topbar .mark{width:34px;height:34px;background:var(--teal);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px}
+.topbar .title{font-size:15px;font-weight:700;flex:1}
+.topbar .title span{font-size:11px;font-weight:400;color:rgba(255,255,255,.6);display:block;line-height:1.2}
+.topbar a{color:#fff;font-size:13px;padding:8px 14px;border:1px solid rgba(255,255,255,.25);border-radius:8px;font-weight:600;background:rgba(255,255,255,.06)}
+.topbar a:hover{background:rgba(255,255,255,.12);text-decoration:none}
+.layout{display:grid;grid-template-columns:240px 1fr;max-width:1200px;margin:0 auto;gap:28px;padding:28px 24px 60px}
+.toc{position:sticky;top:78px;align-self:start;background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;max-height:calc(100vh - 100px);overflow-y:auto}
+.toc-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.toc a{display:block;padding:6px 10px;font-size:13px;color:var(--text);border-radius:6px;font-weight:500;margin-bottom:2px}
+.toc a:hover{background:var(--light);color:var(--navy);text-decoration:none}
+.toc a.active{background:rgba(42,123,111,.1);color:var(--teal);font-weight:600}
+.main{background:#fff;border:1px solid var(--border);border-radius:14px;padding:40px}
+.hero{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;padding:32px;border-radius:14px;margin-bottom:28px}
+.hero h1{font-size:30px;font-weight:700;margin-bottom:8px}
+.hero p{font-size:15px;opacity:.92}
+h2{font-size:24px;color:var(--navy);margin:36px 0 12px;font-weight:700;scroll-margin-top:80px}
+h2:first-of-type{margin-top:0}
+h3{font-size:17px;color:var(--navy);margin:22px 0 8px;font-weight:700}
+p{margin-bottom:12px}
+ul,ol{margin:0 0 14px 22px}
+li{margin-bottom:6px}
+.callout{background:var(--light);border-left:4px solid var(--teal);padding:14px 18px;border-radius:8px;margin:14px 0;font-size:14px}
+.callout.warn{background:#fff7d6;border-color:var(--gold);color:#5c4400}
+.callout.tip{background:#e6f4f1;border-color:var(--teal)}
+.callout b{color:var(--navy)}
+code{background:var(--light);padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;font-size:13px;color:var(--navy);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
+th{background:var(--light);color:var(--navy);font-weight:700}
+.role-pill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.04em;display:inline-block;margin-left:6px}
+.pill-leader{background:#dbeafe;color:var(--navy)}
+.pill-member{background:#eef2f7;color:var(--muted)}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr;gap:14px;padding:18px 14px 40px}
+  .toc{position:static;max-height:none;order:2}
+  .main{padding:22px;order:1}
+  .hero{padding:22px}
+  .hero h1{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="mark">B</div>
+  <div class="title">Build Your Club Academy<span>Grant Writing Assistant — User Guide</span></div>
+  <a href="/">← Back to App</a>
+</div>
+
+<div class="layout">
+  <aside class="toc">
+    <div class="toc-title">In This Guide</div>
+    <a href="#what">What is this tool?</a>
+    <a href="#start">Getting started</a>
+    <a href="#workflow">Recommended workflow</a>
+    <a href="#proposals">Managing proposals</a>
+    <a href="#funder">Funder profile</a>
+    <a href="#sections">The proposal sections</a>
+    <a href="#logic">Logic model</a>
+    <a href="#budget">Budget</a>
+    <a href="#templates">Templates Library</a>
+    <a href="#funderlib">Funder Library</a>
+    <a href="#build">Building the proposal</a>
+    <a href="#team">Team collaboration</a>
+    <a href="#pro">Pro vs Free</a>
+    <a href="#tips">Tips & best practices</a>
+    <a href="#disclaimer">Disclaimer</a>
+  </aside>
+
+  <article class="main">
+    <div class="hero">
+      <h1>Grant Writing Assistant</h1>
+      <p>Manage multiple grant proposals from a single workspace. Capture funder details, draft each section with guided prompts, build budgets, and generate polished proposals as HTML or Word documents.</p>
+    </div>
+
+    <h2 id="what">What is this tool?</h2>
+    <p>The Grant Writing Assistant gives small nonprofits a structured workflow for writing grant proposals. Instead of starting from a blank document every time, you track each proposal as a project — with its own funder profile, deadline, sections, logic model, budget, and attachment checklist. When you're ready, the tool assembles everything into a polished proposal you can preview or download as a Word document.</p>
+    <p>Reuse pays off here. Most nonprofits reuse the same mission statement, organization background, and staff bios across every proposal. The Templates Library captures that boilerplate once so you're not retyping it for every funder.</p>
+
+    <h2 id="start">Getting started</h2>
+    <ol>
+      <li>Click <b>Create Account</b> on the sign-in screen and enter your name, email, and password.</li>
+      <li>Choose <b>Start a new organization</b>, or <b>Join an existing team</b> with a 6-character team code from a teammate.</li>
+      <li>Enter your organization's legal name. That's the entire onboarding — everything else lives inside the app.</li>
+    </ol>
+    <div class="callout tip"><b>Demo accounts:</b> Try <code>demo@example.org</code> / <code>demo</code> for a fully populated demo team with a sample Hartley Foundation proposal already drafted.</div>
+
+    <h2 id="workflow">Recommended workflow</h2>
+    <p>First-time users get the most out of this tool by following this sequence:</p>
+    <ol>
+      <li><b>Set up your Templates Library</b> first. Mission, background, staff bios, evaluation language — fill these in once. Every proposal will copy from here.</li>
+      <li><b>Add the funders you target most</b> to the Funder Library. Each entry captures priorities, contact info, average grant size, and requirements.</li>
+      <li><b>Create a new proposal</b> from a funder entry (or from scratch). The proposal inherits the funder's profile.</li>
+      <li><b>Draft each section</b> using the guided prompts. Use the word-count guidance for funders with strict page limits.</li>
+      <li><b>Build the logic model</b> — inputs through impact. Funders increasingly require this.</li>
+      <li><b>Build the budget</b> line by line. Each line has a category, description, amount, and narrative.</li>
+      <li><b>Mark attachments ready</b> as you collect them.</li>
+      <li><b>Preview and download</b> the final proposal as HTML or .docx for submission.</li>
+    </ol>
+
+    <h2 id="proposals">Managing proposals</h2>
+    <p>The tool supports as many active proposals as you need. Each is a separate project with its own funder, deadline, and status.</p>
+    <h3>Statuses</h3>
+    <ul>
+      <li><b>Drafting</b> — initial writing in progress</li>
+      <li><b>Internal Review</b> — drafted, awaiting board/ED sign-off</li>
+      <li><b>Submitted</b> — sent to funder, awaiting decision</li>
+      <li><b>Awarded</b> — congratulations</li>
+      <li><b>Declined</b> — track these too; useful for follow-up and improvement</li>
+      <li><b>Reporting Required</b> — awarded grant in active reporting cycle</li>
+    </ul>
+    <h3>The active proposal</h3>
+    <p>At the top of any proposal section page, you'll see the active proposal name with a dropdown to switch between proposals. The sidebar nav under "Active Proposal" always edits whichever proposal is currently active.</p>
+
+    <h2 id="funder">Funder profile</h2>
+    <p>Every proposal starts with the funder's profile: name, type, contact, website, average grant size, focus areas, and application requirements. The more detail here, the better you can tailor the rest of the proposal. <b>Priorities</b> is the most important field — paste the funder's stated areas of interest verbatim from their website, then refer to it as you draft.</p>
+
+    <h2 id="sections">The proposal sections</h2>
+    <p>Standard sections that appear in most foundation and government applications. Each section has guiding prompts and a word-count target where applicable.</p>
+    <table>
+      <tr><th>Section</th><th>Purpose</th><th>Target</th></tr>
+      <tr><td>Need Statement</td><td>What problem are you addressing and why does it matter?</td><td>~500 words</td></tr>
+      <tr><td>Project Description</td><td>What will you do, concretely?</td><td>~600 words</td></tr>
+      <tr><td>Goals & Objectives</td><td>Big-picture goal + 2–4 SMART objectives</td><td>~300 words</td></tr>
+      <tr><td>Methods & Logic Model</td><td>How activities produce outcomes</td><td>~500 words + logic model</td></tr>
+      <tr><td>Evaluation</td><td>How you measure success</td><td>~400 words</td></tr>
+      <tr><td>Budget</td><td>Line items + narrative</td><td>Table + ~300 words</td></tr>
+      <tr><td>Sustainability</td><td>How the work continues</td><td>~250 words</td></tr>
+      <tr><td>Timeline</td><td>Quarter-by-quarter milestones</td><td>—</td></tr>
+      <tr><td>Attachments</td><td>Required and supporting documents</td><td>Checklist</td></tr>
+    </table>
+
+    <h2 id="logic">Logic model</h2>
+    <p>A logic model is a visual representation of how your project works: <b>Inputs → Activities → Outputs → Outcomes → Impact</b>. Many funders now require this. The Methods page has a five-column logic model builder.</p>
+    <ul>
+      <li><b>Inputs</b>: Resources you put in — staff time, funding, partnerships, materials.</li>
+      <li><b>Activities</b>: What you actually do — workshops, sessions, materials development.</li>
+      <li><b>Outputs</b>: Immediate products of activities — counts, deliverables.</li>
+      <li><b>Outcomes</b>: Short-term changes — skills, knowledge, behaviors.</li>
+      <li><b>Impact</b>: Long-term change — population-level results.</li>
+    </ul>
+
+    <h2 id="budget">Budget</h2>
+    <p>The Budget page is a line-item editor. Each line has:</p>
+    <ul>
+      <li><b>Category</b> — Personnel, Fringe, Consultants, Supplies, Travel, Equipment, Other Direct, Indirect.</li>
+      <li><b>Description</b> — the specific line item ("Program Director 0.25 FTE").</li>
+      <li><b>Amount</b> — dollar value.</li>
+      <li><b>Narrative</b> — brief explanation of how you arrived at this amount and why it's necessary.</li>
+    </ul>
+    <p>The page automatically totals all line items and compares against your stated ask. A green "balanced" or red "over/under" indicator tells you if the math works.</p>
+
+    <h2 id="templates">Templates Library</h2>
+    <p>Reusable boilerplate that you can copy into any proposal section. Fill these in once:</p>
+    <ul>
+      <li>Mission Statement</li>
+      <li>Organization Background</li>
+      <li>Key Staff Bios</li>
+      <li>Boilerplate Need Language</li>
+      <li>Standard Evaluation Approach</li>
+      <li>Sustainability Boilerplate</li>
+    </ul>
+    <p>Each one has a "Copy to clipboard" button so you can paste into the active proposal section. The Build Proposal step also pulls org background and mission from here automatically.</p>
+
+    <h2 id="funderlib">Funder Library</h2>
+    <p>A catalog of funders you research and target repeatedly. Each entry stores priorities, contact info, average grant size, and application requirements. From any funder entry, click <b>Create proposal →</b> to start a new proposal pre-populated with that funder's profile.</p>
+
+    <h2 id="build">Building the proposal</h2>
+    <p>The Build Proposal page assembles everything into a finished document. Three output options:</p>
+    <ul>
+      <li><b>Preview Proposal (HTML)</b> — opens the assembled proposal in a new tab. Print-ready styling. Use your browser's Print → Save as PDF to create a PDF.</li>
+      <li><b>Download .html</b> — saves the HTML file to your computer.</li>
+      <li><b>Download .docx</b> — generates a real Microsoft Word document for editing and submission.</li>
+    </ul>
+    <p>The page shows readiness statistics: percentage of sections drafted, budget total vs. ask, attachments ready, days to deadline.</p>
+
+    <h2 id="team">Team collaboration</h2>
+    <p>Multiple staff usually contribute to a grant proposal — the Executive Director writes the need statement, the Program Director writes methods, the Treasurer reviews the budget. Use the team feature so they all work in the same proposal.</p>
+    <h3>Roles</h3>
+    <ul>
+      <li><span class="role-pill pill-leader">Leader</span> — full access. Invites and removes members, regenerates team code, upgrades to Pro.</li>
+      <li><span class="role-pill pill-member">Member</span> — edits any proposal section. Cannot manage the team.</li>
+    </ul>
+    <p>Inviting members: leader shares the 6-character team code from the Team page; teammates enter it on the join screen.</p>
+
+    <h2 id="pro">Pro vs Free</h2>
+    <table>
+      <tr><th>Feature</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>Unlimited proposals</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>HTML + .docx output</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Templates Library</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Funder Library</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Team seats</td><td>3</td><td>Unlimited</td></tr>
+      <tr><td>Priority support</td><td>—</td><td>Yes</td></tr>
+      <tr><td>Price</td><td>$0</td><td>$29 / month</td></tr>
+    </table>
+
+    <h2 id="tips">Tips & best practices</h2>
+    <h3>Read the funder's guidelines before drafting</h3>
+    <p>Every funder has specific requirements: page limits, formatting, required attachments, deadlines, allowable costs. Paste these into the "Application Requirements" field of the funder profile so they're always in front of you while drafting.</p>
+
+    <h3>Tailor every proposal — even when reusing boilerplate</h3>
+    <p>The Templates Library saves you typing time, not thinking time. Always edit boilerplate to fit the specific funder's priorities. A generic proposal reads as generic; a funder can tell.</p>
+
+    <h3>Write the need statement to the funder, not in general</h3>
+    <p>If the funder cares about education in California, your need statement should explicitly address education in California — not a national overview that mentions California in passing. Match the funder's geography, population, and intervention type.</p>
+
+    <h3>Show the math in your budget narrative</h3>
+    <p>"$15,000 for Program Director" is not enough. "$15,000 = $60,000 annual salary × 25% FTE × 1 year" tells the funder you understand what you're asking for and how it adds up.</p>
+
+    <h3>Keep a record of declined proposals too</h3>
+    <p>Use the "Declined" status — don't delete declined proposals. Funders often invite you to reapply with adjustments, and your earlier draft is the starting point.</p>
+
+    <h2 id="disclaimer">Disclaimer</h2>
+    <p>This tool is a productivity aid for nonprofit grant writing. It does not guarantee grant awards. Funders have their own selection processes and many factors outside any applicant's control determine outcomes. The boilerplate prompts and templates are starting points — every funder requires customization.</p>
+    <p>Always verify the most current submission requirements directly with the funder before submitting.</p>
+
+    <p style="margin-top:32px;padding-top:18px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)">Build Your Club Academy · Grant Writing Assistant User Guide</p>
+  </article>
+</div>
+
+<script>
+const sections = document.querySelectorAll('h2[id]');
+const links = document.querySelectorAll('.toc a');
+const linkByHash = {};
+links.forEach(l => { linkByHash['#'+l.getAttribute('href').slice(1)] = l; });
+function onScroll(){
+  let active = null;
+  const top = 100;
+  sections.forEach(s => { if (s.getBoundingClientRect().top <= top) active = s.id; });
+  links.forEach(l => l.classList.remove('active'));
+  if (active && linkByHash['#'+active]) linkByHash['#'+active].classList.add('active');
+}
+window.addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+</script>
+</body>
+</html>
